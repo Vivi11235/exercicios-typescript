@@ -1,24 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.listarProdutos = exports.cadastrarProduto = void 0;
-const produtos = [];
-const novoProduto = {
-    nome: "caneta",
-    codigo: 10
-};
-function cadastrarProduto(produto) {
-    produtos.push(produto);
+exports.funcaoExcluir = exports.funcaoAtualizar = exports.funcaoListar = exports.funcaoCadastrar = void 0;
+const index_1 = require("./index");
+function funcaoCadastrar(produto) {
+    index_1.listaProdutos.push(produto);
 }
-exports.cadastrarProduto = cadastrarProduto;
-cadastrarProduto(novoProduto);
-function listarProdutos() {
-    return produtos;
+exports.funcaoCadastrar = funcaoCadastrar;
+function funcaoListar() {
+    console.log(index_1.listaProdutos);
 }
-exports.listarProdutos = listarProdutos;
-function excluirProduto(codigo) {
-    const index = produtos.findIndex((produto) => produto.codigo === codigo);
+exports.funcaoListar = funcaoListar;
+function funcaoAtualizar(idProduto, descricaoProduto, precoProduto) {
+    const index = index_1.listaProdutos.findIndex((item) => item.id === idProduto);
     if (index !== -1) {
-        produtos.splice(index, 1);
+        index_1.listaProdutos[index].descricao = descricaoProduto;
+        index_1.listaProdutos[index].preco = precoProduto;
+    }
+    else if (index === -1) {
+        console.log('Id não encontrado.');
     }
 }
-excluirProduto(10);
+exports.funcaoAtualizar = funcaoAtualizar;
+function funcaoExcluir(idProduto) {
+    const index = index_1.listaProdutos.findIndex((item) => item.id === idProduto);
+    if (index !== -1) {
+        index_1.listaProdutos.splice(index, 1);
+    }
+    else if (index === -1) {
+        console.log('Índice não encontrado.');
+    }
+}
+exports.funcaoExcluir = funcaoExcluir;

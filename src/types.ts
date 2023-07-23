@@ -1,43 +1,48 @@
 // DEFINA O TIPO DE DADO DO OBJETO
 // interface => só modela UM OBJETO
-export interface Nota {
-	valor: number;
-	peso: number;
+
+export interface MediaNumeros {
+    media: number,
+    resultado: MediaResultados;
 }
 
-// OBS: toda vez que precisarmos ter valores pré definidos para um propriedade ou variavel
-// TYPE ALIAS É A SOLUÇÃO
+export type MediaResultados = 'APROVADO' | 'REPROVADO'
 
-type TipoTransacao = 'entrada' | 'saida';
+export interface Nota {
+    nota: number;
+    peso: number;
+}
 
-// ELA MODELA UM OBJETO
-export interface Transacao {
-	valor: number;
-	tipo: TipoTransacao;
+export type Transacao = 'entrada' | 'saida';
+
+export interface dadosTransacao {
+	valor: number,
+	tipo: Transacao
 }
 
 export interface Carteira {
-	saldo: number;
-	transacoes: Array<Transacao>;
+	saldo: number,
+	transacoes: Array<dadosTransacao>
 }
 
 export interface Produto {
-    nome: string;
-    codigo: number;
+    id: string,
+    descricao: string,
+    preco: number;
 }
 
-export type salario = number|string;
+export type Salario = number | 'N/A';
 
 export interface User {
-	nome: string;
-	idade: number;
-	ocupacao: string;
-	salario: salario;
+    nome: string,
+    idade: number,
+    ocupacao: string,
+    salario: Salario
 }
 
 export interface Diretor {
-	nome: string;
-	idade: number;
-	salario: salario;
-	nivelComissionamento: number;
+    nome: string,
+    idade: number,
+    salario: Salario,
+    nivelComissionamento: number
 }

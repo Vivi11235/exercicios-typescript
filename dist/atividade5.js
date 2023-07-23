@@ -6,17 +6,15 @@ usuário não seja informado, mostre o valor “N/A”. Exemplo:
 a. “Daphne, 23 anos, analista de TI, salário R$ 1000”
 b. “Daphne, 23 anos, analista de TI, salário N/A”*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mostrarDados = void 0;
-const usuario = {
-    nome: 'Ricardo',
-    idade: 23,
-    ocupacao: 'engenheiro',
-    salario: 3000
-};
-function mostrarDados() {
-    if (!usuario.salario) {
-        usuario.salario = 'N/A';
+exports.mostrarUsuario = void 0;
+function mostrarUsuario(listaUsuarios) {
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        if (listaUsuarios[i].salario !== 'N/A') {
+            console.log(`${listaUsuarios[i].nome}, ${listaUsuarios[i].idade} anos, ${listaUsuarios[i].ocupacao}, salário R$${listaUsuarios[i].salario},00.`);
+        }
+        if (listaUsuarios[i].salario === 'N/A') {
+            console.log(`${listaUsuarios[i].nome}, ${listaUsuarios[i].idade} anos, ${listaUsuarios[i].ocupacao}, salário ${listaUsuarios[i].salario}`);
+        }
     }
-    console.log(`${usuario.nome}, ${usuario.idade} anos, ${usuario.ocupacao}, salário ${usuario.salario}`);
 }
-exports.mostrarDados = mostrarDados;
+exports.mostrarUsuario = mostrarUsuario;

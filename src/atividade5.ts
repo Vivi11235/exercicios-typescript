@@ -5,21 +5,18 @@ usuário não seja informado, mostre o valor “N/A”. Exemplo:
 a. “Daphne, 23 anos, analista de TI, salário R$ 1000”
 b. “Daphne, 23 anos, analista de TI, salário N/A”*/
 
-import {User} from './types'
-import {salario} from './types'
+import {Salario, User} from './types';
 
+export function mostrarUsuario(listaUsuarios: Array<User>): void{
+   
+    for(let i=0;i<listaUsuarios.length;i++){
+        if(listaUsuarios[i].salario!=='N/A'){
+            console.log(`${listaUsuarios[i].nome}, ${listaUsuarios[i].idade} anos, ${listaUsuarios[i].ocupacao}, salário R$${listaUsuarios[i].salario},00.`);
+        }
 
-const usuario:User = {
-    nome: 'Ricardo',
-    idade: 23,
-    ocupacao: 'engenheiro',
-    salario: 3000
-}
-
-export function mostrarDados(){
-    if(!usuario.salario){
-        usuario.salario = 'N/A';
+        if(listaUsuarios[i].salario==='N/A'){
+            console.log(`${listaUsuarios[i].nome}, ${listaUsuarios[i].idade} anos, ${listaUsuarios[i].ocupacao}, salário ${listaUsuarios[i].salario}`);
+        }
     }
-
-    console.log(`${usuario.nome}, ${usuario.idade} anos, ${usuario.ocupacao}, salário ${usuario.salario}`);
+    
 }

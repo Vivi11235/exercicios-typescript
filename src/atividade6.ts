@@ -5,22 +5,18 @@ comissionamento (numérico). Crie uma função que receba um
 Diretor e mostre suas informações. Exemplos:
 a. “Diretor(a) Daphne, 23 anos, comissão nível 5, salário R$ 1000”
 b. “Diretor(a) Daphne, 23 anos, comissão nível 5, salário N/A”*/
+import {Diretor} from './types';
 
-import {Diretor} from './types'
-import {salario} from './types'
+export function mostrarDiretor(listaDiretores: Array<Diretor>): void{
+   
+    for(let i=0;i<listaDiretores.length;i++){
+        if(listaDiretores[i].salario!=='N/A'){
+            console.log(`Diretor(a) ${listaDiretores[i].nome}, ${listaDiretores[i].idade} anos, comissão nível ${listaDiretores[i].nivelComissionamento}, salário R$${listaDiretores[i].salario},00.`);
+        }
 
-
-const diretor:Diretor = {
-    nome: 'Daphne',
-    idade: 30,
-    salario: 0,
-    nivelComissionamento: 2
-}
-
-export function mostrarDadosDiretor(){
-    if(!diretor.salario){
-        diretor.salario = 'N/A';
+        if(listaDiretores[i].salario==='N/A'){
+            console.log(`Diretor(a) ${listaDiretores[i].nome}, ${listaDiretores[i].idade} anos, comissão nível ${listaDiretores[i].nivelComissionamento}, salário ${listaDiretores[i].salario}`);
+        }
     }
-
-    console.log(`Diretor(a) ${diretor.nome}, comissão nível ${diretor.nivelComissionamento} anos, salário ${diretor.salario}`);
+    
 }

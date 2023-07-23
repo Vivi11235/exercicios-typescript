@@ -1,18 +1,38 @@
-/*
-    3. Crie um programa que simule uma carteira de dinheiro. 
-    Este
-    programa vai precisar ter uma carteira contendo saldo, transações
-    de entrada e saídas. Ou seja, será um objeto com estas
-    propriedades. Depois crie uma função para lançar uma entrada e
-    uma saída. Caso ao lançar uma saída e não tiver saldo, precisa dar
-    um erro ou avisar.
-*/
-// {
-//     valor: 100,
-//     tipo: 'saida'
-// }
+/*3. Crie um programa que simule uma carteira de dinheiro. Este programa 
+vai precisar ter uma carteira contendo saldo, transações de entrada e 
+saídas. Ou seja, será um objeto com estas propriedades. Depois crie uma 
+função para lançar uma entrada e uma saída. Caso ao  lançar uma saída e 
+não tiver saldo, precisa dar um erro ou avisar.*/
 
-import { Carteira, Transacao } from './types';
+import {Transacao} from "./types";
+import {dadosTransacao} from "./types";
+import {Carteira} from "./types";
+
+export function lancarTransacao(transacao: dadosTransacao, carteira: Carteira): Carteira {
+	
+	carteira.transacoes.push(transacao);
+
+	if(transacao.tipo === 'entrada'){
+		carteira.saldo += transacao.valor;
+	}
+
+	if(transacao.tipo === 'saida' && carteira.saldo>=transacao.valor){
+		carteira.saldo -= transacao.valor;
+	}else if(carteira.saldo<transacao.valor){
+		console.log('Saldo insuficiente para realizar a transação.');
+	}
+	
+	return carteira
+}
+
+
+
+
+
+
+
+
+/*import { Carteira, Transacao } from './types';
 
 const transacao: Transacao = {
 	valor: 100,
@@ -75,4 +95,4 @@ export function lancarTransacao(novaTransacao: Transacao) {
 	carteira.transacoes.push(novaTransacao);
 
 	console.log(carteira);
-}
+}*/

@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calcMediaPeso = void 0;
-function calcMediaPeso(listaNotas) {
-    let TotalNotas = 0;
-    listaNotas.forEach((nota) => {
-        let auxiliar = nota.valor * nota.peso;
-        TotalNotas += auxiliar;
-    });
-    return TotalNotas / listaNotas.length;
+exports.calculaMediaPeso = void 0;
+function calculaMediaPeso(lista) {
+    let somaNotasPonderadas = 0;
+    let somaPesos = 0;
+    for (let i = 0; i < lista.length; i++) {
+        somaNotasPonderadas += lista[i].nota * lista[i].peso;
+        somaPesos += lista[i].peso;
+    }
+    let resultado = somaNotasPonderadas / somaPesos;
+    return resultado;
 }
-exports.calcMediaPeso = calcMediaPeso;
+exports.calculaMediaPeso = calculaMediaPeso;
